@@ -1,0 +1,29 @@
+$defaultMargin: 20px;
+$footerHeight: $defaultMargin * 3;
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: $footerHeight + $defaultMargin;
+}
+
+main {
+  margin-top: 50px;
+}
+
+.edit-table {
+  margin-bottom: $defaultMargin;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footerHeight;
+  background-color: #f5f5f5;
+}
+.footer p {
+  margin: $defaultMargin 0;
+}

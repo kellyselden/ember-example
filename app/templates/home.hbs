@@ -1,0 +1,15 @@
+<header>
+  {{nav-bar menuRoute=menuRoute action="changeLocale"}}
+</header>
+
+<main class="container">
+  {{liquid-outlet}}
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="text-muted">
+      {{t "footer.version"}} {{version}} <time>{{timestamp}}</time> | {{t "footer.branch"}} {{branch}}
+    </p>
+  </div>
+</footer>

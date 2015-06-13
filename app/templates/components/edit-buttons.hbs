@@ -1,0 +1,9 @@
+<button class="btn btn-lg btn-primary" {{action "cancel"}}>{{t "buttons.cancel"}}</button>
+{{#unless noSave ~}}
+  <button class="btn btn-lg btn-primary" {{action "save"}}>{{t "buttons.save"}}</button>
+{{/unless ~}}
+{{#unless noRemove ~}}
+  {{#if model.id ~}}
+    <button class="btn btn-lg btn-primary" {{action "remove"}}>{{t "buttons.remove"}}</button>
+  {{/if ~}}
+{{/unless ~}}

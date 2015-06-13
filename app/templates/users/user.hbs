@@ -1,0 +1,18 @@
+<h2>{{t "user.edit"}} - {{model.name}}</h2>
+
+<table class="edit-table">
+  <tr>
+    <td><label for="user-name">{{t "user.name"}}</label></td>
+    <td>{{input id="user-name" value=model.name}}</td>
+  </tr>
+  <tr>
+    <td><label for="user-email">{{t "user.email"}}</label></td>
+    <td>{{input id="user-email" type="email" value=model.email}}</td>
+  </tr>
+  <tr>
+    <td><label>Facebook</label></td>
+    <td>{{model.facebookId}}</td>
+  </tr>
+</table>
+
+{{edit-buttons model=model}}

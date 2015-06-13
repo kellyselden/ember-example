@@ -1,6 +1,34 @@
 /* jshint node: true */
+var fs = require('fs');
+
+var host = fs.readFileSync('./host', 'utf8');
+var github = fs.readFileSync('./github', 'utf8').split('\n')[0];
+var facebook = fs.readFileSync('./facebook', 'utf8').split('\n')[0];
+var version = fs.readFileSync('./version', 'utf8').split('\n');
 
 module.exports = function(environment) {
+  //the environment hack in Brocfile.js isn't persisted throughout the entire app lifecycle
+  environment = process.env.EMBER_ENV;
+
+  var api = 'api/v1';
+
+  var contentSecurityPolicy = {
+    'default-src': "'none'",
+    'script-src': "'self'",
+    'font-src': "'self'",
+    'connect-src': "'self'",
+    'img-src': "'self'",
+    'style-src': "'self'",
+    'media-src': "'self'"
+  };
+  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io';
+  contentSecurityPolicy['style-src'] += ' https://maxcdn.bootstrapcdn.com';
+  contentSecurityPolicy['font-src'] += ' https://maxcdn.bootstrapcdn.com';
+  contentSecurityPolicy['connect-src'] +=
+    ' ' + host.replace('http://', 'ws://')
+    ' https://github.com' +
+    ' https://www.facebook.com';
+
   var ENV = {
     modulePrefix: 'ember-example',
     environment: environment,
@@ -12,12 +40,39 @@ module.exports = function(environment) {
         // e.g. 'with-controller': true
       }
     },
-
+    contentSecurityPolicy: contentSecurityPolicy,
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      api: api,
+      defaultLocale: 'en-us',
+      branch: version[0],
+      version: version[1],
+      timestamp: version[2]
+    },
+    torii: {
+      sessionServiceName: 'session',
+      providers: {
+        'github-oauth2': {
+          apiKey: github,
+          redirectUri: host + '/' + api + '/auth/github/callback'
+        },
+        'facebook-oauth2': {
+          apiKey: facebook,
+          redirectUri: host + '/' + api + '/auth/facebook/callback'
+        }
+      }
     }
   };
+
+  switch (process.env.CLIENT_ENV) {
+    case 'ember':
+      break;
+    case 'express':
+      break;
+    case 'heroku':
+      break;
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -25,6 +80,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    contentSecurityPolicy['style-src'] += " 'unsafe-inline'";
   }
 
   if (environment === 'test') {

@@ -1,0 +1,13 @@
+<h2>{{t "product.products"}}</h2>
+
+<div class="list-group">
+  {{#each product in products}}
+    {{#link-to "products.product" product class="list-group-item"}}
+      <span product-id="{{product.id}}">{{product.name}}</span>
+    {{/link-to}}
+  {{/each}}
+</div>
+
+{{#link-to "products.create"}}
+  <button class="btn btn-lg btn-primary">{{t "buttons.create"}}</button>
+{{/link-to}}

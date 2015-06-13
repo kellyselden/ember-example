@@ -2,6 +2,15 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+//environment hacking because 'development' and 'production' have special meaning
+var devs = ['ember', 'express'];
+var prods = ['heroku'];
+process.env.CLIENT_ENV = process.env.EMBER_ENV;
+if (devs.indexOf(process.env.EMBER_ENV) !== -1)
+  process.env.EMBER_ENV = 'development';
+if (prods.indexOf(process.env.EMBER_ENV) !== -1)
+  process.env.EMBER_ENV = 'production';
+
 var app = new EmberApp();
 
 // Use `app.import` to add additional libraries to the generated

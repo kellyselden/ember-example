@@ -1,0 +1,26 @@
+<h2>{{t "product.edit"}} - <span product-id="{{model.id}}">{{model.name}}</span></h2>
+
+<table class="edit-table">
+  <tr>
+    <td><label for="product-name">{{t "product.name"}}</label></td>
+    <td>{{input id="product-name" value=model.name}}</td>
+  </tr>
+  <tr>
+    <td><label for="product-type">{{t "product.type"}}</label></td>
+    <td>
+      {{view "select-localized"
+        id="product-type"
+        content=types
+        optionValuePath="content.value"
+        optionLabelKeyPrefix="product.types"
+        value=model.type
+      }}
+    </td>
+  </tr>
+  <tr>
+    <td><label for="product-public">{{t "product.public"}}</label></td>
+    <td>{{input id="product-public" type="checkbox" checked=model.isPublic}}</td>
+  </tr>
+</table>
+
+{{edit-buttons model=model}}

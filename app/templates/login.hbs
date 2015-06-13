@@ -1,0 +1,9 @@
+{{#if session.isWorking}}
+  One sec while we get you signed in...
+{{else}}
+  <button {{action "authenticate" "github-oauth2"}}>github</button>
+  <button {{action "authenticate" "facebook-oauth2"}}>facebook</button>
+{{/if}}
+{{#if session.isAuthenticated}}
+  logged in
+{{/if}}
