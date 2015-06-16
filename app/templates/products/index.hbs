@@ -1,5 +1,7 @@
 <h2>{{t "product.products"}}</h2>
 
+{{input value=search}}
+
 <div class="list-group">
   {{#each product in products}}
     {{#link-to "products.product" product class="list-group-item"}}
