@@ -1,4 +1,4 @@
-import CreateRoute from '../routes/create';
+import CreateRoute from '../../routes/create';
 
 export default CreateRoute.extend({
   model: function() {

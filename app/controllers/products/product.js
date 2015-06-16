@@ -1,4 +1,4 @@
-import EditController from '../controllers/edit';
+import EditController from '../../controllers/edit';
 
 var types = ['first', 'second'];
 
