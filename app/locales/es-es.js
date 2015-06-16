@@ -22,6 +22,7 @@ export default {
       one: '%@ producto',
       other: '%@ productos'
     },
+    loadMore: 'Carga más',
     edit: 'Editar Producto',
     name: 'Nombre',
     type: 'Tipo',
