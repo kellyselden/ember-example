@@ -1,6 +1,7 @@
 <h2>{{t "product.products"}}</h2>
 
 {{input value=search}}
+{{t "product.count" model.meta.count}}
 
 <div class="list-group">
   {{#each product in products}}

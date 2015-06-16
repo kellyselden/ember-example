@@ -18,6 +18,10 @@ export default {
   },
   product: {
     products: 'Products',
+    count: {
+      one: '%@ product',
+      other: '%@ products'
+    },
     edit: 'Edit Product',
     name: 'Name',
     type: 'Type',
