@@ -4,7 +4,7 @@
 {{t "product.count" model.meta.count}}
 
 <div class="list-group">
-  {{#each product in products}}
+  {{#each product in model}}
     {{#link-to "products.product" product class="list-group-item"}}
       <span product-id="{{product.id}}">{{product.name}}</span>
     {{/link-to}}

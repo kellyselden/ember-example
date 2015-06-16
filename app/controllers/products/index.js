@@ -9,9 +9,6 @@ export default Ember.Controller.extend({
     this.set('page', 0);
   }.observes('search'),
 
-  productsSorting: ['name'],
-  products: Ember.computed.sort('model', 'productsSorting'),
-
   actions: {
     loadMore() {
       this.store.find('product', {
