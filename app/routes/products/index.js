@@ -1,12 +1,13 @@
 import Ember from 'ember';
+import InfinityRoute from 'ember-infinity/mixins/route';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(InfinityRoute, {
   queryParams: {
     search: {
       refreshModel: true
     }
   },
   model: function(params) {
-    return this.store.find('product', params);
+    return this.infinityModel('product', Ember.$.extend({ perPage: 10 }, params));
   }
 });

@@ -1,5 +1,9 @@
 <h2>{{t "product.products"}}</h2>
 
+{{#link-to "products.create"}}
+  <button class="btn btn-lg btn-primary">{{t "buttons.create"}}</button>
+{{/link-to}}
+
 {{input value=search}}
 {{t "product.count" model.meta.count}}
 
@@ -11,7 +15,4 @@
   {{/each}}
 </div>
 
-<button class="btn btn-lg btn-primary" {{action "loadMore"}}>{{t "product.loadMore"}}</button>
-{{#link-to "products.create"}}
-  <button class="btn btn-lg btn-primary">{{t "buttons.create"}}</button>
-{{/link-to}}
+{{infinity-loader infinityModel=model loadingText="Loading..." loadedText=""}}

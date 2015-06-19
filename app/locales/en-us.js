@@ -22,7 +22,6 @@ export default {
       one: '%@ product',
       other: '%@ products'
     },
-    loadMore: 'Load more',
     edit: 'Edit Product',
     name: 'Name',
     type: 'Type',
