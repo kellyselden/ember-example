@@ -1,7 +1,7 @@
 import CreateRoute from '../../routes/create';
 
 export default CreateRoute.extend({
-  model: function() {
+  model() {
     return this._super('product');
   },
   controllerName: 'products/product',

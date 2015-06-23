@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   actions: {
-    cancel: function() {
+    cancel() {
       this.get('targetObject').send('cancel');
     },
-    save: function() {
+    save() {
       this.get('targetObject').send('save');
     },
-    remove: function() {
+    remove() {
       this.get('targetObject').send('remove');
     }
   }

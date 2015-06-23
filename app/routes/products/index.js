@@ -7,7 +7,7 @@ export default Ember.Route.extend(InfinityRoute, {
       refreshModel: true
     }
   },
-  model: function(params) {
+  model(params) {
     return this.infinityModel('product', Ember.$.extend({ perPage: 10 }, params));
   }
 });

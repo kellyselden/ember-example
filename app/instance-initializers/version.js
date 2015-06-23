@@ -10,7 +10,7 @@ export function initialize(instance) {
   // prevent messages from stacking up
   var lastRunTime = moment();
 
-  socket.on('version', function(msg) {
+  socket.on('version', msg => {
     var isNewVersion = msg !== ENV.APP.version;
     if (isNewVersion) {
       var secondsSinceLastRunTime = moment().subtract(lastRunTime).seconds();

@@ -3,10 +3,10 @@ export function initialize(instance) {
 
   var socket = window.io();
 
-  socket.on('save', function(msg) {
+  socket.on('save', msg => {
     store.fetch(msg.type, msg.id);
   });
-  socket.on('remove', function(msg) {
+  socket.on('remove', msg => {
     if (store.hasRecordForId(msg.type, msg.id)) {
       store.getById(msg.type, msg.id).deleteRecord();
     }
