@@ -45,7 +45,6 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       api: api,
-      defaultLocale: 'en-us',
       branch: version[0],
       version: version[1],
       timestamp: version[2]
@@ -62,6 +61,9 @@ module.exports = function(environment) {
           redirectUri: host + '/' + api + '/auth/facebook/callback'
         }
       }
+    },
+    i18n: {
+      defaultLocale: 'en-us'
     }
   };
 

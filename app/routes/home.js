@@ -1,17 +1,17 @@
 import Ember from 'ember';
-import LocaleRouteMixin from 'ember-cli-i18n-route/mixins/locale-route';
+import LocaleRouteMixin from 'ember-i18n-route/mixins/locale-route';
 
 export default Ember.Route.extend(LocaleRouteMixin, {
   actions: {
-    changeMenu: function(routeName) {
+    changeMenu(routeName) {
       this.controller.set('menuRoute', routeName);
     },
-    changeLocale: function() {
-      this._super.apply(this, arguments);
+    changeLocale() {
+      this._super(...arguments);
 
-      Ember.run.scheduleOnce('afterRender', function() {
+      Ember.run.scheduleOnce('afterRender', () => {
         this.send('changeMenu', this.controllerFor("application").get("currentRouteName"));
-      }.bind(this));
+      });
     }
   }
 });

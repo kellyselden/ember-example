@@ -19,8 +19,8 @@ export default {
   product: {
     products: 'Productos',
     count: {
-      one: '%@ producto',
-      other: '%@ productos'
+      one: '{{count}} producto',
+      other: '{{count}} productos'
     },
     edit: 'Editar Producto',
     name: 'Nombre',
