@@ -37,14 +37,6 @@ var app = new EmberApp({
       'https://code.jquery.com/jquery-2.1.4.js',
       'https://code.jquery.com/jquery-2.1.4.min.js'
     ),
-    'ember.js': jsContent(
-      'https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.12.1/ember.debug.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/ember.js/1.12.1/ember.min.js'
-    ),
-    'ember-data.js': jsContent(
-      'https://cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.19.1/ember-data.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.19.1/ember-data.min.js'
-    ),
     'bootstrap.css': cssContent(
       'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.css',
       'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'
@@ -59,8 +51,7 @@ var app = new EmberApp({
     )
   },
   vendorFiles: {
-    'jquery.js': false,
-    'ember.js': false
+    'jquery.js': false
   }
 });
 

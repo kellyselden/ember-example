@@ -21,7 +21,7 @@ module.exports = function(environment) {
     'style-src': "'self'",
     'media-src': "'self'"
   };
-  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io';
+  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io https://code.jquery.com https://cdnjs.cloudflare.com';
   contentSecurityPolicy['style-src'] += ' https://maxcdn.bootstrapcdn.com';
   contentSecurityPolicy['font-src'] += ' https://maxcdn.bootstrapcdn.com';
   contentSecurityPolicy['connect-src'] +=

@@ -37,6 +37,7 @@
     "ember-cli-sass": "^4.0.0",
     "ember-cli-transition-to-dynamic": "0.0.2",
     "ember-cli-uglify": "^1.0.1",
+    "ember-data": "1.0.0-beta.19.1",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-i18n": "jamesarosen/ember-i18n#master",
