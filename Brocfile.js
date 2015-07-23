@@ -11,49 +11,7 @@ if (devs.indexOf(process.env.EMBER_ENV) !== -1)
 if (prods.indexOf(process.env.EMBER_ENV) !== -1)
   process.env.EMBER_ENV = 'production';
 
-var env = EmberApp.env();
-
-function wrapLinkTag(href) {
-  return '<link rel="stylesheet" href="' + href + '">';
-}
-function wrapScriptTag(src) {
-  return '<script src="' + src + '"></script>';
-}
-
-function content(dev, prod) {
-  return env == 'development' ? dev : prod;
-}
-
-function cssContent(dev, prod) {
-  return { content: wrapLinkTag(content(dev, prod)) };
-}
-function jsContent(dev, prod) {
-  return { content: wrapScriptTag(content(dev, prod)) };
-}
-
-var app = new EmberApp({
-  inlineContent: {
-    'jquery.js': jsContent(
-      'https://code.jquery.com/jquery-2.1.4.js',
-      'https://code.jquery.com/jquery-2.1.4.min.js'
-    ),
-    'bootstrap.css': cssContent(
-      'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.css',
-      'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'
-    ),
-    'bootstrap.js': jsContent(
-      'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.js',
-      'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js'
-    ),
-    'socket.io.js': jsContent(
-      'https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.2.1/socket.io.js',
-      'https://cdn.socket.io/socket.io-1.2.1.js'
-    )
-  },
-  vendorFiles: {
-    'jquery.js': false
-  }
-});
+var app = new EmberApp();
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
