@@ -10,6 +10,7 @@ export default {
     language: 'Idioma'
   },
   home: 'Esta es la página de inicio.',
+  welcome: 'Esta es la página de inicio, {{firstName}}.',
   user: {
     users: 'Usuarios',
     edit: 'Editar Usuario',

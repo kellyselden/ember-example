@@ -33,7 +33,10 @@ export default Ember.Component.extend({
 
   actions: {
     changeLocale(locale) {
-      this.sendAction('action', locale);
+      this.sendAction('changeLocale', locale);
+    },
+    signOut() {
+      this.sendAction('signOut');
     }
   }
 });

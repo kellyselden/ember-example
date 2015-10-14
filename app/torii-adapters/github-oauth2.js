@@ -1,5 +1,6 @@
-import Oauth2 from './oauth2';
+import Oauth2 from './application';
 
 export default Oauth2.extend({
-  provider: 'github'
+  provider: 'github',
+  authCodeProperty: 'authorizationCode'
 });

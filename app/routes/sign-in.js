@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actions: {
     authenticate(provider) {
+      console.log(arguments);
       this.get('session').open(provider).then(authorization => {
         console.log('success');
         console.log(arguments);

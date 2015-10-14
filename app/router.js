@@ -10,8 +10,8 @@ Router.map(function() {
   adminRouter(this);
   // this.resource('auth', { path: 'api/v1/auth/:provider/callback' });
   this.resource('home', { path: ':locale' }, function() {
-    this.resource('login');
-    this.resource('users', function() {
+    this.resource('sign-in');
+    this.authenticatedRoute('users', { resetNamespace: true }, function() {
       this.resource('users.user', { path: ':user_id' });
     });
     this.resource('products', function() {

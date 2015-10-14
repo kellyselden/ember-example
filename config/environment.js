@@ -2,8 +2,8 @@
 var fs = require('fs');
 
 var host = fs.readFileSync('./host', 'utf8');
-var github = fs.readFileSync('./github', 'utf8').split('\n')[0];
-var facebook = fs.readFileSync('./facebook', 'utf8').split('\n')[0];
+var github = fs.readFileSync('./github', 'utf8').split('\n')[0].trim();
+var facebook = fs.readFileSync('./facebook', 'utf8').split('\n')[0].trim();
 var version = fs.readFileSync('./version', 'utf8').split('\n');
 
 module.exports = function(environment) {
@@ -21,8 +21,10 @@ module.exports = function(environment) {
     'style-src': "'self'",
     'media-src': "'self'"
   };
-  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io https://code.jquery.com https://cdnjs.cloudflare.com';
+  contentSecurityPolicy['default-src'] = 'https://www.facebook.com http://static.ak.facebook.com https://s-static.ak.facebook.com';
+  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io https://code.jquery.com https://cdnjs.cloudflare.com http://connect.facebook.net https://connect.facebook.net';
   contentSecurityPolicy['style-src'] += ' https://maxcdn.bootstrapcdn.com';
+  contentSecurityPolicy['img-src'] += ' https://www.facebook.com';
   contentSecurityPolicy['font-src'] += ' https://maxcdn.bootstrapcdn.com';
   contentSecurityPolicy['connect-src'] +=
     ' ' + host.replace('http://', 'ws://')
@@ -54,11 +56,16 @@ module.exports = function(environment) {
       providers: {
         'github-oauth2': {
           apiKey: github,
-          redirectUri: host + '/' + api + '/auth/github/callback'
+          redirectUri: 'http://localhost:4200'
         },
         'facebook-oauth2': {
           apiKey: facebook,
-          redirectUri: host + '/' + api + '/auth/facebook/callback'
+          // redirectUri: host + '/' + api + '/auth/facebook/callback'
+          redirectUri: 'http://localhost:4200/en-us/login'
+        },
+        'facebook-connect': {
+          appId: facebook,
+          scope: 'email,user_birthday'
         }
       }
     },
@@ -84,6 +91,9 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     contentSecurityPolicy['style-src'] += " 'unsafe-inline'";
+    if (contentSecurityPolicy['connect-src'].indexOf('ws://localhost:4200') === -1) {
+      contentSecurityPolicy['connect-src'] += ' ws://localhost:4200';
+    }
   }
 
   if (environment === 'test') {

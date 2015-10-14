@@ -1,0 +1,17 @@
+<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  {{#if session.isAuthenticated}}
+    {{session.currentUser.firstName}}
+    <span class="caret"></span>
+  {{else}}
+    {{link-to "Sign In" "sign-in"}}
+  {{/if}}
+</a>
+  {{#if session.isAuthenticated}}
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="#" {{action "action"}}>
+        Sign Out
+      </a>
+    </li>
+  </ul>
+{{/if}}

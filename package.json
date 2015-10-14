@@ -45,6 +45,6 @@
     "ember-infinity": "0.0.10",
     "ember-moment": "1.1.1",
     "liquid-fire": "~0.19.0",
-    "torii": "~0.4.0"
+    "torii": "0.6.1"
   }
 }

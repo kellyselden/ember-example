@@ -5,7 +5,7 @@
 <ul class="dropdown-menu" role="menu">
   {{#each locale in locales}}
     <li>
-      <a href="#" {{action "changeLocale" locale.value}}>
+      <a href="#" {{action "action" locale.value}}>
         {{t locale.key}}
       </a>
     </li>
