@@ -25,12 +25,11 @@ export default Ember.Object.extend({
     }
     var query = {};
     query[`${provider}Id`] = userId;
-    return wrapPromise(this.store.find('user', query).then(users => {
-      if (users.length) {
-        return users[0];
-      } else {
+    return wrapPromise(this.store.queryRecord('user', query).then(user => {
+      if (!user) {
         return reject();
       }
+      return user;
     }));
   },
   close() {
