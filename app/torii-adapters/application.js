@@ -1,58 +1,50 @@
 import Ember from 'ember';
-import ENV from '../config/environment';
 
 const {
-  RSVP: { Promise, resolve, reject },
-  $: { ajax },
-  run
+  RSVP: { resolve, reject }
 } = Ember;
-const { APP: { api } } = ENV;
 
 // TODO use wrapper for localStorage
 export default Ember.Object.extend({
   open(authentication) {
     var provider = this.get('provider');
     var code = authentication[this.get('authCodeProperty')];
-    return sync('open', provider, code).then(session => {
-      localStorage.provider = provider;
-      localStorage.code = code;
-      return session;
-    });
+    return wrapPromise(this.authorizeUser(code).then(user => {
+      localStorage.auth = JSON.stringify({
+        provider,
+        code,
+        userId: user.get(`${provider}Id`)
+      });
+      return user;
+    }));
   },
   fetch() {
-    var { provider, code } = localStorage;
+    var { provider, code, userId } = JSON.parse(localStorage.auth);
     if (!code) {
       return reject();
     }
-    return sync('fetch', provider, code);
+    var query = {};
+    query[`${provider}Id`] = userId;
+    return wrapPromise(this.store.find('user', query).then(users => {
+      if (users.length) {
+        return users[0];
+      } else {
+        return reject();
+      }
+    }));
   },
   close() {
-    delete localStorage.provider;
-    delete localStorage.code;
+    delete localStorage.auth;
     return resolve();
   }
 });
 
-function sync(method, provider, code) {
-  return new Promise((resolve, reject) => {
-    // ajax({
-    //   url: `${api}/auth/${provider}`,
-    //   type: 'POST',
-    //   data: {
-    //     method,
-    //     provider,
-    //     code
-    //   },
-    //   dataType: 'json',
-    //   success: run.bind(null, resolve),
-    //   error: run.bind(null, reject)
-    // });
-    resolve({
-      firstName: 'Kelly'
-    });
-  }).then(user => {
+function wrapPromise(promise) {
+  return promise.then(user => {
     return {
       currentUser: user
     };
+  }).catch(function() {
+    console.log(arguments);
   });
 }

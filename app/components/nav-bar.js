@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
+const { on, observer } = Ember;
+
 export default Ember.Component.extend({
   tagName: 'nav',
   classNames: ['navbar', 'navbar-inverse', 'navbar-fixed-top'],
   attributeBindings: ['role'],
   role: 'navigation',
 
-  menuRouteChanged: function() {
+  menuRouteChanged: on('init', observer('menuRoute', function() {
     var menuRoute = this.get('menuRoute');
     if (!menuRoute) {
       return;
@@ -18,6 +20,7 @@ export default Ember.Component.extend({
     this.set('homeClass', '');
     this.set('usersClass', '');
     this.set('productsClass', '');
+    this.set('userClass', '');
     switch (menuRoute) {
       case 'home':
         this.set('homeClass', 'active');
@@ -28,8 +31,11 @@ export default Ember.Component.extend({
       case 'products':
         this.set('productsClass', 'active');
         break;
+      case 'sign-in':
+        this.set('userClass', 'active');
+        break;
     }
-  }.observes('menuRoute').on('init'),
+  })),
 
   actions: {
     changeLocale(locale) {

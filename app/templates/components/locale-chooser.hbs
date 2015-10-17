@@ -5,7 +5,7 @@
 <ul class="dropdown-menu" role="menu">
   {{#each locale in locales}}
     <li>
-      <a href="#" {{action "action" locale.value}}>
+      <a href="#" data-toggle="{{if data-target collapse}}" data-target="{{data-target}}" {{action "action" locale.value}}>
         {{t locale.key}}
       </a>
     </li>

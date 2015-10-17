@@ -20,7 +20,7 @@
         {{#link-to "products"}}{{t "product.products"}}{{/link-to}}
       </li>
       {{locale-chooser action="changeLocale"}}
-      {{user-tab action="signOut"}}
+      {{user-tab class=userClass action="signOut"}}
     </ul>
     <ul class="nav navbar-nav visible-xs">
       <li class={{homeClass}} data-toggle="collapse" data-target="#navbar">
@@ -32,8 +32,8 @@
       <li class={{productsClass}} data-toggle="collapse" data-target="#navbar">
         {{#link-to "products"}}{{t "product.products"}}{{/link-to}}
       </li>
-      {{locale-chooser action="changeLocale"}}
-      {{user-tab action="signOut"}}
+      {{locale-chooser data-target="#navbar" action="changeLocale"}}
+      {{user-tab class=userClass data-target="#navbar" action="signOut"}}
     </ul>
   </div>
 </div>

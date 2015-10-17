@@ -22,13 +22,13 @@ module.exports = function(environment) {
     'media-src': "'self'"
   };
   contentSecurityPolicy['default-src'] = 'https://www.facebook.com http://static.ak.facebook.com https://s-static.ak.facebook.com';
-  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io https://code.jquery.com https://cdnjs.cloudflare.com http://connect.facebook.net https://connect.facebook.net';
+  contentSecurityPolicy['script-src'] += ' https://maxcdn.bootstrapcdn.com https://cdn.socket.io https://code.jquery.com https://cdnjs.cloudflare.com http://connect.facebook.net https://connect.facebook.net https://graph.facebook.com';
   contentSecurityPolicy['style-src'] += ' https://maxcdn.bootstrapcdn.com';
   contentSecurityPolicy['img-src'] += ' https://www.facebook.com';
   contentSecurityPolicy['font-src'] += ' https://maxcdn.bootstrapcdn.com';
   contentSecurityPolicy['connect-src'] +=
-    ' ' + host.replace('http://', 'ws://')
-    ' https://github.com' +
+    ' ' + host.replace('http://', 'ws://') +
+    ' https://api.github.com' +
     ' https://www.facebook.com';
 
   var ENV = {
@@ -56,7 +56,8 @@ module.exports = function(environment) {
       providers: {
         'github-oauth2': {
           apiKey: github,
-          redirectUri: 'http://localhost:4200'
+          redirectUri: 'http://localhost:4200',
+          scope: 'user'
         },
         'facebook-oauth2': {
           apiKey: facebook,
@@ -64,8 +65,7 @@ module.exports = function(environment) {
           redirectUri: 'http://localhost:4200/en-us/login'
         },
         'facebook-connect': {
-          appId: facebook,
-          scope: 'email,user_birthday'
+          appId: facebook
         }
       }
     },

@@ -15,7 +15,12 @@ export default {
     users: 'Usuarios',
     edit: 'Editar Usuario',
     name: 'Nombre',
-    email: 'Correo'
+    firstName: 'Nombre de Pila',
+    lastName: 'Apellido',
+    email: 'Correo',
+    signIn: 'Ingresar',
+    signOut: 'Desconectarse',
+    signingIn: 'Uno seg mientras que conseguimos que firmó en...'
   },
   product: {
     products: 'Productos',

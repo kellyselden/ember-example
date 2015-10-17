@@ -6,7 +6,7 @@ export default Ember.Route.extend({
       this.get('session').close();
     },
     accessDenied() {
-      this.transitionTo('login');
+      this.transitionTo('sign-in');
     }
   }
 });

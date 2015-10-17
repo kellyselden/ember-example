@@ -1,17 +1,15 @@
-<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-  {{#if session.isAuthenticated}}
+{{#if session.isAuthenticated}}
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     {{session.currentUser.firstName}}
     <span class="caret"></span>
-  {{else}}
-    {{link-to "Sign In" "sign-in"}}
-  {{/if}}
-</a>
-  {{#if session.isAuthenticated}}
+  </a>
   <ul class="dropdown-menu" role="menu">
-    <li>
+    <li data-toggle="{{if data-target collapse}}" data-target="{{data-target}}">
       <a href="#" {{action "action"}}>
-        Sign Out
+        {{t "user.signOut"}}
       </a>
     </li>
   </ul>
+{{else}}
+  {{link-to (t "user.signIn") "sign-in"}}
 {{/if}}

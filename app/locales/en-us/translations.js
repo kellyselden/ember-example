@@ -15,7 +15,12 @@ export default {
     users: 'Users',
     edit: 'Edit User',
     name: 'Name',
-    email: 'Email'
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    email: 'Email',
+    signIn: 'Sign In',
+    signOut: 'Sign Out',
+    signingIn: 'One sec while we get you signed in...'
   },
   product: {
     products: 'Products',

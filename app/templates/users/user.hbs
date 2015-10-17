@@ -6,12 +6,24 @@
     <td>{{input id="user-name" value=model.name}}</td>
   </tr>
   <tr>
+    <td><label for="user-first-name">{{t "user.firstName"}}</label></td>
+    <td>{{input id="user-first-name" value=model.firstName}}</td>
+  </tr>
+  <tr>
+    <td><label for="user-last-name">{{t "user.lastName"}}</label></td>
+    <td>{{input id="user-last-name" value=model.lastName}}</td>
+  </tr>
+  <tr>
     <td><label for="user-email">{{t "user.email"}}</label></td>
     <td>{{input id="user-email" type="email" value=model.email}}</td>
   </tr>
   <tr>
     <td><label>Facebook</label></td>
     <td>{{model.facebookId}}</td>
+  </tr>
+  <tr>
+    <td><label>GitHub</label></td>
+    <td>{{model.githubId}}</td>
   </tr>
 </table>
 

@@ -1,15 +1,14 @@
 import Ember from 'ember';
+import NavRouteMixin from '../mixins/nav-route';
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(NavRouteMixin, {
   actions: {
     authenticate(provider) {
-      console.log(arguments);
-      this.get('session').open(provider).then(authorization => {
-        console.log('success');
-        console.log(arguments);
-      }, () => {
-        console.log('fail');
-        console.log(arguments);
+      this.controller.set('error', null);
+      this.get('session').open(provider).then(() => {
+        this.transitionTo('home');
+      }, status => {
+        this.controller.set('error', status);
       });
     }
   }
