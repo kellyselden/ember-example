@@ -14,14 +14,16 @@ export default Oauth2.extend({
         if (response.error) {
           return reject(response.error);
         }
+        let facebookId = response.id;
         this.store.find('user', {
-          facebookId: response.id
+          facebookId
         }).then(users => {
           let data = {
             name: response.name,
             firstName: response.first_name,
             lastName: response.last_name,
-            email: response.email
+            email: response.email,
+            facebookId
           };
           let user = users.toArray()[0];
           if (user) {
