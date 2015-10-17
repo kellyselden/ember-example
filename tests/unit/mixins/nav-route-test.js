@@ -2,7 +2,7 @@ import Ember from 'ember';
 import NavRouteMixin from '../../../mixins/nav-route';
 import { module, test } from 'qunit';
 
-module('NavRouteMixin');
+module('Unit | Mixin | nav route');
 
 // Replace this with your real tests.
 test('it works', function(assert) {

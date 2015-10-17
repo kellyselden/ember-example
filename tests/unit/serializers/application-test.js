@@ -1,15 +1,15 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { moduleForModel, test } from 'ember-qunit';
 
-moduleFor('serializer:application', {
+moduleForModel('application', 'Unit | Serializer | application', {
   // Specify the other units that are required for this test.
-  // needs: ['serializer:foo']
+  needs: ['serializer:application']
 });
 
 // Replace this with your real tests.
-test('it exists', function(assert) {
-  var serializer = this.subject();
-  assert.ok(serializer);
+test('it serializes records', function(assert) {
+  var record = this.subject();
+
+  var serializedRecord = record.serialize();
+
+  assert.ok(serializedRecord);
 });

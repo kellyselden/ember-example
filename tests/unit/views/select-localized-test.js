@@ -1,9 +1,6 @@
-import {
-  moduleFor,
-  test
-} from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('view:select-localized');
+moduleFor('view:select-localized', 'Unit | View | select localized');
 
 // Replace this with your real tests.
 test('it exists', function(assert) {
