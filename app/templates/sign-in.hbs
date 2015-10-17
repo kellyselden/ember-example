@@ -2,7 +2,6 @@
   {{t "user.signingIn"}}
 {{else}}
   <button {{action "authenticate" "github-oauth2"}}>github</button>
-  <button {{action "authenticate" "facebook-oauth2"}}>facebook</button>
   <button {{action "authenticate" "facebook-connect"}}>facebook connect</button>
 {{/if}}
 {{error}}

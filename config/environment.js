@@ -59,11 +59,6 @@ module.exports = function(environment) {
           redirectUri: 'http://localhost:4200',
           scope: 'user'
         },
-        'facebook-oauth2': {
-          apiKey: facebook,
-          // redirectUri: host + '/' + api + '/auth/facebook/callback'
-          redirectUri: 'http://localhost:4200/en-us/login'
-        },
         'facebook-connect': {
           appId: facebook
         }
