@@ -1,5 +1,5 @@
 export function initialize(instance) {
-  var store = instance.container.lookup('store:application');
+  var store = instance.container.lookup('service:store');
 
   var socket = window.io();
 
