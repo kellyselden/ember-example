@@ -10,7 +10,7 @@ module.exports = function(environment) {
   //the environment hack in Brocfile.js isn't persisted throughout the entire app lifecycle
   environment = process.env.EMBER_ENV;
 
-  var api = 'api/v1';
+  var namespace = 'api/v1';
 
   var contentSecurityPolicy = {
     'default-src': "'none'",
@@ -46,7 +46,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      api: api,
+      host: host,
+      namespace: namespace,
       branch: version[0],
       version: version[1],
       timestamp: version[2]

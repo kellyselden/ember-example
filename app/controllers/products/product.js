@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import EditController from '../../controllers/edit';
 
 const { computed } = Ember;
