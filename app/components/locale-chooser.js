@@ -1,14 +1,16 @@
 import Ember from 'ember';
 
+const { computed } = Ember;
+
 export default Ember.Component.extend({
   tagName: 'li',
   classNames: ['dropdown'],
 
-  locales: function() {
+  locales: computed(function() {
     return this.get('i18n.locales').map(locale => {
       return { value: locale, key: `locales.${locale}` };
     });
-  }.property(),
+  }),
 
   actions: {
     action(locale) {

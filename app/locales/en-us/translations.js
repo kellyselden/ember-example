@@ -37,6 +37,9 @@ export default {
     },
     public: 'Public'
   },
+  common: {
+    loading: 'Loading...'
+  },
   buttons: {
     create: 'Create',
     cancel: 'Cancel',

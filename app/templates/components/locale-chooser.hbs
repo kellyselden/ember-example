@@ -3,7 +3,7 @@
   <span class="caret"></span>
 </a>
 <ul class="dropdown-menu" role="menu">
-  {{#each locale in locales}}
+  {{#each locales as |locale|}}
     <li>
       <a href="#" data-toggle="{{if data-target collapse}}" data-target="{{data-target}}" {{action "action" locale.value}}>
         {{t locale.key}}

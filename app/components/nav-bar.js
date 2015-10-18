@@ -9,11 +9,11 @@ export default Ember.Component.extend({
   role: 'navigation',
 
   menuRouteChanged: on('init', observer('menuRoute', function() {
-    var menuRoute = this.get('menuRoute');
+    let menuRoute = this.get('menuRoute');
     if (!menuRoute) {
       return;
     }
-    var i = menuRoute.indexOf('.');
+    let i = menuRoute.indexOf('.');
     if (i > 0) {
       menuRoute = menuRoute.substr(0, i);
     }

@@ -1,20 +1,21 @@
 import ENV from '../config/environment';
 
-var moment = window.moment;
+const { moment } = window;
+const { version } = ENV.APP;
 
-var secondsBetweenConfirms = 10;
+const secondsBetweenConfirms = 10;
 
 export function initialize(instance) {
-  var socket = instance.container.lookup('io:main');
+  let socket = instance.container.lookup('io:main');
 
   // prevent messages from stacking up
-  var lastRunTime = moment();
+  let lastRunTime = moment();
 
   socket.on('version', msg => {
-    var isNewVersion = msg !== ENV.APP.version;
+    let isNewVersion = msg !== version;
     if (isNewVersion) {
-      var secondsSinceLastRunTime = moment().subtract(lastRunTime).seconds();
-      var hasEnoughTimePassed = secondsSinceLastRunTime > secondsBetweenConfirms;
+      let secondsSinceLastRunTime = moment().subtract(lastRunTime).seconds();
+      let hasEnoughTimePassed = secondsSinceLastRunTime > secondsBetweenConfirms;
       if (hasEnoughTimePassed) {
         if (confirm('App updated. Reload?')) {
           window.location.reload();

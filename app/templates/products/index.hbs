@@ -8,11 +8,11 @@
 {{t "product.count" count=model.meta.count}}
 
 <div class="list-group">
-  {{#each product in model}}
+  {{#each model as |product|}}
     {{#link-to "products.product" product class="list-group-item"}}
       <span product-id="{{product.id}}">{{product.name}}</span>
     {{/link-to}}
   {{/each}}
 </div>
 
-{{infinity-loader infinityModel=model loadingText="Loading..." loadedText=""}}
+{{infinity-loader infinityModel=model loadingText=(t "common.loading") loadedText=""}}

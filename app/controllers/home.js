@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import ENV from '../config/environment';
 
-var moment = window.moment;
+const { moment } = window;
+const { branch, version, timestamp } = ENV.APP;
 
 export default Ember.Controller.extend({
-  branch: ENV.APP.branch,
-  version: ENV.APP.version,
-  timestamp: moment(new Date(ENV.APP.timestamp)).format('llll')
+  branch,
+  version,
+  timestamp: moment(new Date(timestamp)).format('llll')
 });

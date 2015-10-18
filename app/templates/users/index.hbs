@@ -1,7 +1,7 @@
 <h2>{{t "user.users"}}</h2>
 
 <div class="list-group">
-  {{#each user in model}}
+  {{#each model as |user|}}
     {{link-to user "users.user" user class="list-group-item"}}
   {{/each}}
 </div>
