@@ -9,16 +9,16 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   adminRouter(this);
   // this.resource('auth', { path: 'api/v1/auth/:provider/callback' });
-  this.resource('home', { path: ':locale' }, function() {
-    this.resource('sign-in');
+  this.route('home', { path: ':locale' }, function() {
+    this.route('sign-in', { resetNamespace: true });
     this.authenticatedRoute('users', { resetNamespace: true }, function() {
-      this.resource('users.user', { path: ':user_id' });
+      this.route('user', { path: ':user_id' });
     });
-    this.resource('products', function() {
+    this.route('products', { resetNamespace: true }, function() {
       this.route('create');
-      this.resource('products.product', { path: ':product_id' });
+      this.route('product', { path: ':product_id' });
     });
-    this.resource('catchall', { path: '/*wildcard' });
+    this.route('catchall', { path: '/*wildcard', resetNamespace: true });
   });
 });
 
