@@ -1,9 +1,7 @@
-const { io } = window;
-
 export function initialize(instance) {
   let store = instance.container.lookup('service:store');
 
-  let socket = io();
+  let socket = window.io();
 
   socket.on('save', msg => {
     store.fetch(msg.type, msg.id);
