@@ -1,7 +1,7 @@
 # Ember-example
 
 [![Dependency Status](https://www.versioneye.com/user/projects/55821864386664001f000689/badge.svg?style=flat)](https://www.versioneye.com/user/projects/55821864386664001f000689)
-[![devDependency Status](https://david-dm.org/kellyselden/ember-example/dev-status.svg)](https://david-dm.org/kellyselden/ember-example#info=devDependencies)
+[![devDependencies Status](https://david-dm.org/kellyselden/ember-example/dev-status.svg)](https://david-dm.org/kellyselden/ember-example?type=dev)
 
 This README outlines the details of collaborating on this Ember application.
 A short introduction of this app could easily go here.
